@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: password
+  pool: 5
+
+development:
+  <<: *default
+  database: docker_test_rails6_v1_development
+
+test:
+  <<: *default
+  database: docker_test_rails6_v1_test
+
+production:
+  <<: *default
+  database: docker_test_rails6_v1_production
+  username: docker_test_rails6_v1
+  password: <%= ENV['DOCKER_TEST_RAILS6_V1_DATABASE_PASSWORD'] %>
